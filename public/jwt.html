@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script>
+		$(function() {
+			var body = {email:"test@gmail.com", password: "123abc"};
+			$.ajax({
+			  url: 'http://162.222.181.11:3000/api/authenticate',
+			  type: "POST",
+			  data: JSON.stringify(body),
+			  contentType: "application/json; charset=utf-8",
+			  dataType: "json",
+			  success: function(response) {
+				console.log(response);		
+				body = {
+					stock: {symbol: "SPXU"},
+					access_token: response.token
+				};
+				$.ajax({
+				  url: 'http://162.222.181.11:3000/api/user/stock',
+				  type: "POST",
+				  data: JSON.stringify(body),
+				  contentType: "application/json; charset=utf-8",
+				  dataType: "json",
+				  success: function(response) {
+					console.log(response);
+
+				  }
+				});
+			  }
+			});
+		});
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

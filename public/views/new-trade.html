@@ -1,0 +1,38 @@
+		<div id="new-stock">
+			<h3>Add a Symbol to Watch</h3>
+			<div class="row">
+				<label for="symbol" class="col-xs-6">Symbol</label>
+				<input class="col-xs-6" type="text" ng-model="new_trade.symbol">
+			</div>
+			<div class="row">
+				<label for="position" class="col-xs-6">Position</label>
+				<select class="col-xs-6"  ng-model="new_trade.position">
+					<option value="long">Long</option>
+					<option value="short">Short</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="limit" class="col-xs-6">Would Buy/Sell At</label>
+				<input class="col-xs-6" type="text" ng-model="new_trade.limit">
+			</div>
+			<div class="row">
+				<label for="stop" class="col-xs-6">Would Stop At</label>
+				<input class="col-xs-6" type="text" ng-model="new_trade.stop">
+			</div>
+			<div class="row">
+				<label for="reason" class="col-xs-6">Reason</label>
+				<select class="col-xs-6"  ng-model="new_trade.reason">
+					<option value="news">News</option>
+					<option value="gut">Gut Feeling</option>
+					<option value="pattern">Pattern</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="note" class="col-xs-6">Note</label>
+				<textarea class="col-xs-6" type="text" ng-model="new_trade.note"></textarea>
+			</div>
+			<div>
+				<label class="col-xs-6"></label>
+				<button type="button" class="button-teal" ng-click="newTrade(new_trade)" >Add to List</button>
+			</div>
+		</div>

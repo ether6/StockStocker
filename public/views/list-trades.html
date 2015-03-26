@@ -1,0 +1,136 @@
+		<div id="add-trade">
+			<button ng-click="showNewTrade = ! showNewTrade" class="button-teal inline">+</button>
+			<span>Add New Trade</span>
+		</div>
+		<div class="epoch active" id="trade-epoch">
+			<div class="c1">
+				<div class="epoch-name">{{epoch.name}}</div><br>
+			</div>
+			<div class="c2">
+				<span>Total Gain</span><br>
+				<span>${{epoch.gain}}</span>
+			</div>
+			<div class="c3">
+				<span>Total Loss</span><br>
+				<span>${{epoch.loss}}</span>
+			</div>
+		</div>
+
+		<div id="list-trades">
+			<div class="row">
+					<span>Symbol</span><!-- 
+				 --><span>Profit/Loss</span><!-- 
+				 --><span>Open</span><!-- 
+				 --><span></span><!--
+				 --><span></span>
+			</div>
+			<div ng-repeat="trade in epoch.trades track by $index" class="row">
+				<!-- <span class="symbol"><button class="button-teal inline" ng-click="deleteTrade(trade._id)" >x</button></span> -->
+				<p>
+					<span class="symbol" ng-click="showTradeDetails = ! showTradeDetails" >{{trade.symbol}}</span><!-- 
+				 --><span class="profit" ng-class="{negative: trade.profit < 0, positive: trade.profit >= 0}">{{trade.profit}}</span><!-- 
+				 --><span class="open">{{trade.open}}</span><!-- 
+				 --><span class="edit" ng-click="showEditTrade = ! showEditTrade" ></span><!--
+				 --><span class="delete" ng-click="showTradeDelete = ! showTradeDelete" ></span>
+				</p>
+				<div class="modal-outer" ng-show="showTradeDetails">
+					<div class="modal-inner">
+		         		<a ng-click="showTradeDetails=false">close</a>         
+						<h3>Trade Details</h3>
+			            {{trade}}
+					</div>
+				</div>
+				<div class="modal-outer" ng-show="showTradeDelete">
+					<div class="modal-inner">
+						<h3>Delete Trade</h3>
+						<p>Are you sure you want to remove this trade from your epoch? Doing so upsets your epoch's integrety.</p><br>
+						<div>
+							<button type="button" class="button-purple" ng-click="showTradeDelete=false">Cancel</button>
+							<button type="button" class="button-teal pull-right" ng-click="deleteTrade(trade._id); showTradeDelete = false" >Delete</button>
+						</div>
+					</div>
+				</div>
+				<div class="modal-outer" ng-show="showEditTrade">
+					<div class="modal-inner">
+						<h3>Trade Details</h3>
+						<div class="row">
+							<label for="symbol">Symbol</label>
+							<input type="text" value="{{trade.symbol}}" readonly>
+						</div>
+						<div class="row">
+							<label for="num_shares">Number Shares</label>
+							<input type="text" value="{{trade.num_shares}}" readonly>
+						</div>
+						<div class="row">
+							<label for="position">Position</label>
+							<input type="text" value="{{trade.position}}" readonly>
+						</div>
+						<div class="row">
+							<label for="limit">Limit</label>
+							<input type="text" ng-model="edit_trade.limit" placeholder="{{trade.limit}}">
+						</div>
+						<div class="row">
+							<label for="stop">Stop</label>
+							<input type="text" ng-model="edit_trade.stop" placeholder="{{trade.stop}}">
+						</div>
+<!-- 						<div class="row">
+							<label for="reason">Reason</label>
+							<input type="text" value="{{trade.reason}}" readonly>
+						</div>
+ -->						<div class="row">
+							<label for="note">Note</label>
+							<textarea type="text" ng-model="edit_trade.note" placerholder="{{trade.note}}"></textarea>
+						</div>
+						<div>
+							<button type="button" class="button-purple" ng-click="showEditTrade=false">Cancel</button>
+							<button type="button" class="button-teal pull-right" ng-click="editTrade(edit_trade); showEditTrade = false" >Add to List</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-outer" ng-show="showNewTrade">
+			<div id="new-stock" class="modal-inner">
+				<h3>Add a Symbol to Watch</h3>
+				<div class="row">
+					<label for="symbol">Symbol</label>
+					<input type="text" ng-model="new_trade.symbol">
+				</div>
+				<div class="row">
+					<label for="num_shares">Number Shares</label>
+					<input type="text" ng-model="new_trade.num_shares">
+				</div>
+				<div class="row">
+					<label for="position">Position</label>
+					<select  ng-model="new_trade.position">
+						<option value="long">Long</option>
+						<option value="short">Short</option>
+					</select>
+				</div>
+				<div class="row">
+					<label for="limit">Limit</label>
+					<input type="text" ng-model="new_trade.limit">
+				</div>
+				<div class="row">
+					<label for="stop">Stop</label>
+					<input type="text" ng-model="new_trade.stop">
+				</div>
+<!-- 				<div class="row">
+					<label for="reason">Reason</label>
+					<select ng-model="new_trade.reason">
+						<option value="news">News</option>
+						<option value="gut">Gut Feeling</option>
+						<option value="pattern">Pattern</option>
+					</select>
+				</div>
+ -->				<div class="row">
+					<label for="note">Note</label>
+					<textarea type="text" ng-model="new_trade.note"></textarea>
+				</div>
+				<div>
+					<button type="button" class="button-purple" ng-click="showNewTrade=false">Cancel</button>
+					<button type="button" class="button-teal pull-right" ng-click="newTrade(new_trade); showNewTrade = false" >Add to List</button>
+				</div>
+			</div>
+		</div>

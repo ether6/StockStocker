@@ -1,0 +1,17 @@
+		<div id="log-in">
+			<h3>Log In</h3>
+			<div class="row">
+				<label for="email">Email Address</label>
+				<input type="text" ng-model="login.email">
+			</div>
+			<div class="row">
+				<label for="passeord">Password</label>
+				<input type="password" ng-model="login.password">
+			</div>
+			<div class="row checkbox-after-button">
+			    <input type="checkbox" ng-model="login.remember">&nbsp;&nbsp;Remember
+			</div>
+			<div class="row">
+				<button type="button" class="button-teal" ng-click="logIn(login)" >Log In</button>
+			</div>
+		</div>

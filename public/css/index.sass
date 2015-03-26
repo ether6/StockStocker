@@ -1,0 +1,395 @@
+$light_purple:  #6c125b
+$medium_purple:  #2c0a3a
+$dark_purple:  #22052d
+$text_dark_purple:  #250830
+$text_light_purple:  #9c63b0
+$text_medium_purple:  #633c71
+$text_white:  #ffffff
+$text_salmon: #cd4f4c
+$text_yellow: #eab31e
+$button_purple:  #7b2c80
+$button_teal:  #2c96a2
+
+=border-radius($radius)
+	-webkit-border-radius: $radius
+	-moz-border-radius:    $radius
+	-ms-border-radius:     $radius
+	border-radius:         $radius
+
+
+/* make transparent link selection, adjust last value opacity 0 to 1.0 */
+body
+	/* prevent callout to copy image, etc when tap to hold */
+	-webkit-touch-callout:  none
+	/* prevent webkit from resizing text to fit */
+	-webkit-text-size-adjust:  none
+	/* prevent copy paste, to allow, change 'none' to 'text' */
+	-webkit-user-select:  none
+	background: $light_purple
+	background: -moz-linear-gradient(45deg,  $light_purple 0%, $dark_purple 100%)
+	background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,$light_purple), color-stop(100%,$dark_purple))
+	background: -o-linear-gradient(45deg,  $light_purple 0%,$dark_purple 100%)
+	background: -ms-linear-gradient(45deg,  $light_purple 0%,$dark_purple 100%)
+	background: linear-gradient(45deg,  $light_purple 0%,$dark_purple 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$light_purple', endColorstr='$dark_purple',GradientType=1 )
+	background-attachment: fixed
+	font-family: 'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif
+	font-size: 12px
+	height: 100%
+	margin: 0
+	padding: 0
+	width: 100%
+	color: $text_light_purple
+
+/* Portrait layout (default) */
+.app
+	/* 170px x 200px */
+	background: url(../img/logo.png) no-repeat center top
+	/* position in the center of the screen */
+	position: absolute
+	left: 50%
+	top: 50%
+	/* text area height */
+	height: 50px
+	/* text area width */
+	width: 225px
+	text-align: center
+	/* image height is 200px (bottom 20px are overlapped with text) */
+	padding: 180px 0px 0px 0px
+	/* offset vertical:  half of image height and text area height */
+	/* offset horizontal:  half of text area width */
+	margin: -115px 0px 0px -112px
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width: 400px)
+	.app
+		background-position: left center
+		/* padding-top + padding-bottom + text area = image height */
+		padding: 75px 0px 75px 170px
+		/* offset vertical:  half of image height */
+		/* offset horizontal:  half of image width and text area width */
+		margin: -90px 0px 0px -198px
+
+a
+	color: inherit
+	text-decoration: none
+
+h1
+	font-size: 24px
+	font-weight: normal
+	margin: 0px
+	overflow: visible
+	padding: 0px
+	text-align: center
+
+.event
+	border-radius: 4px
+	-webkit-border-radius: 4px
+	color: #FFFFFF
+	font-size: 12px
+	margin: 0px 30px
+	padding: 2px 0px
+
+.event.listening
+	background-color: $dark_purple
+	display: block
+
+.event.received
+	background-color: $light_purple
+	display: none
+
+@keyframes fade
+	from
+		opacity:  1.0
+	50%
+		opacity:  0.4
+	to
+		opacity:  1.0
+ 
+@-webkit-keyframes fade
+	from
+		opacity:  1.0
+	50%
+		opacity:  0.4
+	to
+		opacity:  1.0
+ 
+.blink
+	animation: fade 3000ms infinite
+	-webkit-animation: fade 3000ms infinite
+
+header
+	padding: 15px 5%
+	background-color: $dark_purple
+
+	a, div
+		display: inline-block
+		height: 39px
+		vertical-align: middle
+
+	#back-nav
+		width: 10%
+		background-image: url('../images/white-left-arrow.png')
+		background-position: left center
+		background-repeat: no-repeat
+
+	#header-logo
+		width: 80%
+		text-align: center
+
+		img
+
+
+	#hamburger
+		width: 10%
+		background-image: url('../images/nav.png')
+		background-position: right center
+		background-repeat: no-repeat
+
+#message
+	margin: 0
+
+#nav
+	background-color: #22052d
+	height: 100%
+	padding: 2% 10px
+
+input, textarea, select
+	padding: 10px 2% 10px 0
+	background: transparent
+	border: 1px solid $light_purple
+	color: $text_light_purple
+	margin: 10px 0
+	+border-radius(3px)
+	width: 98%
+	text-align: right
+
+input[type="checkbox"]
+	width: auto
+
+select
+	width: 100%
+
+.row
+	position: relative
+
+label
+	color: $text_light_purple
+	position: absolute
+	top: 21px
+	left: 10px
+
+button
+	width: 48%
+	font-size: 16px
+	padding: 10px 0
+	text-align: center
+	color: $text_white
+	border: none
+	+border-radius(3px)
+	cursor: pointer
+
+button.pull-right
+	float: right
+
+button.inline
+	display: inline-block
+	vertical-align: middle
+	width: auto
+	padding: 10px
+
+.button-teal
+	background-color: $button_teal
+
+.button-purple
+	background-color: $button_purple
+
+.row.checkbox-after-button
+	color: $text_light_purple
+	left: 50%
+	margin: 5px
+	position: absolute
+	z-index: 1
+
+footer
+	position: fixed
+	bottom: 0
+
+.negative
+	color: $text_salmon
+
+.positive
+	color: $text_yellow
+
+#list-epochs
+	margin: 0 5%
+	width: 90%
+
+.epoch
+	width: 100%
+	border-bottom: 1px solid $light_purple
+	position: relative
+	background-image: url('../images/teal-right-arrow.png')
+	background-position: right center
+	background-repeat: no-repeat
+
+	a
+		display: block
+
+	div
+		display: inline-block
+		vertical-align: top
+	
+		div
+			display: inline-block
+			vertical-align: top	
+
+	.c1
+		margin: 15px 0
+		width: 35%
+
+		.epoch-name
+			color: $text_white
+			text-transform: uppercase
+			font-weight: bold
+			margin-bottom: 10px
+
+		.show-trades
+			color: $text_medium_purple
+			padding-right: 15px
+			background-image: url('../images/info-i.png')
+			background-position: right center
+			background-repeat: no-repeat
+
+	.c2
+		margin: 15px 0
+		width: 30%
+
+		span:first-child
+			padding-right: 15px
+			background-image: url('../images/small-up-arrow.png')
+			background-position: right center
+			background-repeat: no-repeat
+
+		span:last-child
+			margin: 5px 0
+			font-size: 28px
+			color: $text_yellow
+
+	.c3
+		margin: 15px 0
+		width: 30%
+
+		span:first-child
+			padding-right: 15px
+			background-image: url('../images/small-down-arrow.png')
+			background-position: right center
+			background-repeat: no-repeat
+
+		span:last-child
+			margin: 5px 0
+			font-size: 28px
+			color: $text_salmon
+
+.epoch.active
+	background-image: url('../images/teal-down-arrow.png')
+
+#add-trade, #trade-epoch
+	margin: 0 5%
+	width: 90%
+
+#add-epoch, #add-trade
+	border-bottom: 1px solid $light_purple
+	padding: 25px 0 
+
+	span
+		display: inline-block
+		vertical-align: center
+		margin-left: 10px
+		font-size: 20px
+		color: $text_white
+		vertical-align: middle
+
+	button
+		font-size: 20px
+		padding: 5px 9px
+
+
+.modal-outer
+	background-color: rgba(0, 0, 0, 0.6)
+	left: 0
+	top: 0
+	width: 100%
+	height: 100%
+	position: fixed
+	z-index: 100
+	overflow-y: auto
+
+.modal-inner
+	margin: 10%
+	padding: 5%
+	+border-radius(3px)
+	background-color: #fff
+
+#list-trades>.row
+	border-bottom: 1px solid #2c0a3a
+
+#list-trades
+	background-color: $dark_purple
+
+	.row
+		margin: 0
+		padding: 15px 3%
+
+	.modal-inner
+		.row
+			padding: 0
+
+	p
+		margin: 0
+
+	div
+		span
+			display: inline-block 
+			vertical-align: middle
+			height: 15px
+			font-size: 15px
+
+		span:nth-child(1)
+			width: 25%
+			cursor: pointer
+
+		span:nth-child(2)
+			width: 30%
+
+		span:nth-child(3)
+			width: 15%
+			text-align: center
+
+		span:nth-child(4), span:nth-child(5)
+			width: 15%
+			height: 20px
+			cursor: pointer
+
+	div:first-child
+		color: $text_white
+
+	div.modal-inner
+		color: $text_dark_purple
+
+	div.ng-scope
+		span:nth-child(4)
+			background-image: url('../images/edit.png')
+			background-position: right center
+			background-repeat: no-repeat
+
+		span:nth-child(5)
+			background-image: url('../images/delete.png')
+			background-position: right center
+			background-repeat: no-repeat
+
+
+
+
+
+

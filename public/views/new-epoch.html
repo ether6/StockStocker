@@ -1,0 +1,12 @@
+		<div id="new-stock">
+			<h3>Add an Epoch</h3>
+			<p>Epochs are a way to group your trades. You should create new epochs anytime there is a fundemental shift in your trading strategy.</p>
+			<div class="row">
+				<label for="name" class="col-xs-6">Epoch Name</label>
+				<input class="col-xs-6" type="text" ng-model="new_epoch.name">
+			</div>
+			<div>
+				<label class="col-xs-6"></label>
+				<button type="button" class="btn btn-primary" ng-click="newEpoch(new_epoch)">Add to List</button>
+			</div>
+		</div>

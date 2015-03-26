@@ -1,0 +1,37 @@
+		<div id="list-epochs">
+			<div id="add-epoch">
+				<button ng-click="showNewEpoch = ! showNewEpoch" class="button-teal inline">+</button>
+				<span>Add New Epoch</span>
+			</div>
+			<div ng-repeat="epoch in epochs" class="epoch">
+<!-- 				<button ng-click="deleteEpoch(epoch._id)" >x</button> 
+ -->				<a href="epoch/{{epoch._id}}{{epoch.i_d}}">
+					<div class="c1">
+						<div class="epoch-name">{{epoch.name}}</div><br>
+						<div class="show-trades">Show Trades</div>
+					</div>
+					<div class="c2">
+						<span>Total Gain</span><br>
+						<span>${{epoch.gain}}</span>
+					</div>
+					<div class="c3">
+						<span>Total Loss</span><br>
+						<span>${{epoch.loss}}</span>
+					</div>
+				</a>
+			</div>
+		</div>
+		<div id="new-epoch" class="modal-outer" ng-show="showNewEpoch">
+			<div class="modal-inner">
+				<h3>Add an Epoch</h3>
+				<p>Epochs are a way to group your trades. You should create new epochs anytime there is a fundemental shift in your trading strategy.</p>
+				<div class="row">
+					<label for="name">Epoch Name</label>
+					<input type="text" ng-model="new_epoch.name">
+				</div>
+				<div>
+					<button type="button" class="button-purple" ng-click="showNewEpoch = false">Cancel</button>
+					<button type="button" class="button-teal" ng-click="newEpoch(new_epoch); showNewEpoch = false">Add to List</button>
+				</div>
+			</div>
+		</div>

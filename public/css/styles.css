@@ -1,0 +1,13 @@
+body {
+	margin: 2.5%;
+}
+.row {
+	margin: 20px 0;
+}
+#wrapper {
+	max-width: 700px;
+	margin: 0 auto; 
+}
+#my-trades li {
+	list-style: none;
+}
