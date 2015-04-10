@@ -16,7 +16,7 @@ var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
                 user: app.get('email'),
-                pass: 'damn2g2m2g22'
+                pass: ''
         }
 })
 // middleware
